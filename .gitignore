@@ -1,0 +1,10 @@
+# Project exclude paths
+/aop-integration/target/
+/mybatis-main/target/
+/mybatis-spring-boot-starter-main/target/
+/mybatis-spring-main/target/
+/rpc-spring-boot-starter-main/target/
+/rpc-spring-boot-starter-test-consumer-main/target/
+/rpc-spring-boot-starter-test-provider-main/rpc-provider-interfaces/target/
+/whitelist-spring-boot-starter-main/target/
+/whitelist-spring-boot-starter-test-main/target/
