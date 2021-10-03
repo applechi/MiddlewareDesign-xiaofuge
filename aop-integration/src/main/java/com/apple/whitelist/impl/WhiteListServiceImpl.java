@@ -3,7 +3,7 @@ package com.apple.whitelist.impl;
 import com.apple.DoJoinPoint;
 import com.apple.ReflectUtils;
 import com.apple.annotation.DoIntegration;
-import com.apple.whitelist.IWhiteListService;
+import com.apple.whitelist.WhiteListService;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,7 +17,7 @@ import java.lang.reflect.Method;
  * @date 2021-09-20 15:25
  **/
 @Service
-public class IWhiteListServiceImpl implements IWhiteListService {
+public class WhiteListServiceImpl implements WhiteListService {
 
     @Resource
     private String whiteListConfig;

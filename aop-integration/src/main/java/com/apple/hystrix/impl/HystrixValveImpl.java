@@ -1,8 +1,8 @@
-package com.apple.valve.impl;
+package com.apple.hystrix.impl;
 
 import com.apple.ReflectUtils;
 import com.apple.annotation.DoIntegration;
-import com.apple.valve.IValveService;
+import com.apple.hystrix.HystrixValveService;
 import com.netflix.hystrix.HystrixCommand;
 import com.netflix.hystrix.HystrixCommandGroupKey;
 import com.netflix.hystrix.HystrixCommandKey;
@@ -22,7 +22,7 @@ import java.lang.reflect.Method;
  */
 @Service
 @Scope("prototype")
-public class HystrixValveImpl extends HystrixCommand<Object> implements IValveService {
+public class HystrixValveImpl extends HystrixCommand<Object> implements HystrixValveService {
 
     private ProceedingJoinPoint jp;
     private Method method;

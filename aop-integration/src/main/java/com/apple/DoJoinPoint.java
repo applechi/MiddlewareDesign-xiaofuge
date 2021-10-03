@@ -1,9 +1,11 @@
 package com.apple;
 
 import com.apple.annotation.DoIntegration;
-import com.apple.valve.IValveService;
-import com.apple.valve.impl.HystrixValveImpl;
-import com.apple.whitelist.IWhiteListService;
+import com.apple.extmethod.ExtMethodService;
+import com.apple.hystrix.HystrixValveService;
+import com.apple.hystrix.impl.HystrixValveImpl;
+import com.apple.ratelimiter.RateLimiterService;
+import com.apple.whitelist.WhiteListService;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
@@ -25,12 +27,18 @@ import java.lang.reflect.Method;
 public class DoJoinPoint {
 
     private Logger logger = LoggerFactory.getLogger(DoJoinPoint.class);
-    
-    @Autowired
-    private IValveService iValveService;
 
     @Autowired
-    private IWhiteListService iWhiteListService;
+    private HystrixValveService hystrixValveService;
+
+    @Autowired
+    private WhiteListService whiteListService;
+
+    @Autowired
+    private RateLimiterService rateLimiterService;
+
+    @Autowired
+    private ExtMethodService extMethodService;
 
     @Pointcut("@annotation(com.apple.annotation.DoIntegration)")
     public void aopPoint() {
@@ -42,17 +50,28 @@ public class DoJoinPoint {
         Method method = ReflectUtils.getMethod(jp);
         //DoIntegration doIntegration = method.getAnnotation(DoIntegration.class);
 
+        //执行白名单处理
+        if (!"".equals(doIntegration.key())) {
+            return whiteListService.access(doIntegration, jp);
+        }
+
         //执行熔断处理
         if (doIntegration.timeoutValue() != 0) {
             //注意这里好像要每次请求都要生成一个实例，不然会报错，采用spring 多例@Scope("prototype")只是多个地方@autoWire是多个实例，但是对于同一个controller注入还是单例的！！！
             return new HystrixValveImpl().access(jp, method, doIntegration, jp.getArgs());
-            //return iValveService.access(jp, method, doIntegration, jp.getArgs());
+            //return hystrixValveService.access(jp, method, doIntegration, jp.getArgs());
         }
-        //执行白名单处理
-        if (!"".equals(doIntegration.key())) {
-            return iWhiteListService.access(doIntegration, jp);
+
+        //限流处理
+        if (doIntegration.permitsPerSecond() != 0) {
+            return rateLimiterService.access(jp, method, doIntegration, jp.getArgs());
         }
-        
-        return null;
+
+        //方法拓展处理
+        if (!doIntegration.method().equals("")) {
+            return extMethodService.access(doIntegration, jp);
+        }
+
+        return ReflectUtils.returnDefaultObject(method);
     }
 }

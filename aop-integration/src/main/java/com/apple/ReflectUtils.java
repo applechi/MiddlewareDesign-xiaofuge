@@ -16,6 +16,7 @@ import java.lang.reflect.Method;
 public class ReflectUtils {
 
     public static Object returnObject(DoIntegration doIntegration, Method method) {
+        //获取调用方法的返回类型，这里是controller调用所以就是UserInfo
         Class<?> returnType = method.getReturnType();
         String returnJson = doIntegration.returnJson();
         if ("".equals(returnJson)) {
@@ -23,9 +24,13 @@ public class ReflectUtils {
                 return returnType.newInstance();
             } catch (Exception e) {
                 e.printStackTrace();
-            } 
+            }
         }
         return JSON.parseObject(returnJson, returnType);
+    }
+
+    public static Object returnDefaultObject(Method method) {
+        return JSON.parseObject("{\"code\":\"1111\",\"info\":\"Hello,默认返回！\"}", method.getReturnType());
     }
 
     // 获取属性值
@@ -51,5 +56,10 @@ public class ReflectUtils {
         Signature sig = jp.getSignature();
         MethodSignature methodSignature = (MethodSignature) sig;
         return jp.getTarget().getClass().getMethod(methodSignature.getName(), methodSignature.getParameterTypes());
+    }
+
+ 
+    public static Class<? extends Object> getClass(JoinPoint jp) throws NoSuchMethodException {
+        return jp.getTarget().getClass();
     }
 }
