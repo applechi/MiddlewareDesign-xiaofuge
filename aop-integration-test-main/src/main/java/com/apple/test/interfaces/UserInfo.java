@@ -1,4 +1,4 @@
-package cn.bugstack.middleware.whitelist.test.interfaces;
+package com.apple.test.interfaces;
 
 /**
  * 博客：https://bugstack.cn - 沉淀、分享、成长，让自己和他人都能有所收获！

@@ -1,4 +1,4 @@
-package cn.bugstack.middleware.whitelist.test;
+package com.apple.test;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -11,7 +11,7 @@ import org.springframework.context.annotation.ComponentScan;
  * Create by 小傅哥(fustack)
  */
 @SpringBootApplication
-@ComponentScan(basePackages = {"cn.bugstack.middleware.*"})  //这个扫描自己工程的controller包
+//@ComponentScan(basePackages = {"cn.bugstack.middleware.*"})  //这个扫描自己工程的controller包
 @ComponentScan(basePackages = {"com.apple.**"})   //这个扫描引入的工程包，aop-integration
 //@ComponentScan(basePackageClasses = DoJoinPoint.class)
 public class ApiTestApplication {

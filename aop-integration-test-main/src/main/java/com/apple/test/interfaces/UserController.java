@@ -1,4 +1,4 @@
-package cn.bugstack.middleware.whitelist.test.interfaces;
+package com.apple.test.interfaces;
 
 import com.apple.annotation.DoIntegration;
 import org.slf4j.Logger;
