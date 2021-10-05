@@ -6,10 +6,10 @@ import org.springframework.context.annotation.ImportResource;
 
 @SpringBootApplication
 @ImportResource(locations = {"classpath:spring-config.xml"})
-public class ApiTestApplication {
+public class ApiConsumerTestApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(ApiTestApplication.class, args);
+        SpringApplication.run(ApiConsumerTestApplication.class, args);
     }
 
 }

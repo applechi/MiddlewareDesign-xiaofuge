@@ -12,9 +12,9 @@ import javax.annotation.Resource;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("classpath:spring-config.xml")
-public class ApiTest {
+public class ApiConsumerTest {
 
-    private Logger logger = LoggerFactory.getLogger(ApiTest.class);
+    private Logger logger = LoggerFactory.getLogger(ApiConsumerTest.class);
 
     @Resource
     private HelloService helloService;
