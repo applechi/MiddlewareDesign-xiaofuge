@@ -1,0 +1,27 @@
+{
+  "groups": [
+    {
+      "name": "bugstack.middleware.scheudle",
+      "type": "cn.bugstack.middleware.schedule.config.StarterServiceProperties",
+      "sourceType": "cn.bugstack.middleware.schedule.config.StarterServiceProperties"
+    }
+  ],
+  "properties": [
+    {
+      "name": "bugstack.middleware.scheudle.scheduler-server-id",
+      "type": "java.lang.String",
+      "sourceType": "cn.bugstack.middleware.schedule.config.StarterServiceProperties"
+    },
+    {
+      "name": "bugstack.middleware.scheudle.scheduler-server-name",
+      "type": "java.lang.String",
+      "sourceType": "cn.bugstack.middleware.schedule.config.StarterServiceProperties"
+    },
+    {
+      "name": "bugstack.middleware.scheudle.zk-address",
+      "type": "java.lang.String",
+      "sourceType": "cn.bugstack.middleware.schedule.config.StarterServiceProperties"
+    }
+  ],
+  "hints": []
+}

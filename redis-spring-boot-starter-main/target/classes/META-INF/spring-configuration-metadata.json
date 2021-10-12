@@ -1,0 +1,23 @@
+{
+  "groups": [
+    {
+      "name": "redis",
+      "type": "cn.bugstack.middleware.redis.config.XRedisProperties",
+      "sourceType": "cn.bugstack.middleware.redis.config.XRedisProperties"
+    }
+  ],
+  "properties": [
+    {
+      "name": "redis.host",
+      "type": "java.lang.String",
+      "sourceType": "cn.bugstack.middleware.redis.config.XRedisProperties"
+    },
+    {
+      "name": "redis.port",
+      "type": "java.lang.Integer",
+      "sourceType": "cn.bugstack.middleware.redis.config.XRedisProperties",
+      "defaultValue": 0
+    }
+  ],
+  "hints": []
+}

@@ -8,3 +8,12 @@
 /rpc-spring-boot-starter-test-provider-main/rpc-provider-interfaces/target/
 /whitelist-spring-boot-starter-main/target/
 /whitelist-spring-boot-starter-test-main/target/
+### Example user template template
+### Example user template
+
+# IntelliJ project files
+.idea
+*.iml
+out
+gen
+/redis-spring-boot-starter-main/target/
